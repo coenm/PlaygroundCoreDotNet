@@ -1,0 +1,2 @@
+# PlaygroundCoreDotNet
+Just a playground
