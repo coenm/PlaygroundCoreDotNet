@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Playground.Calculator", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Playground.Calculator.MsTest.Test", "src\Playground.Calculator.MsTest.Test\Playground.Calculator.MsTest.Test.csproj", "{A8AB3B3A-1381-428E-A88B-0AF8E500AD4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playground.Calculator.xUnit.Test", "Playground.Calculator.xUnit.Test\Playground.Calculator.xUnit.Test.csproj", "{9D11551A-BEAA-4E66-BC24-A7D6085468B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playground.Calculator.xUnit.Test", "src\Playground.Calculator.xUnit.Test\Playground.Calculator.xUnit.Test.csproj", "{9D11551A-BEAA-4E66-BC24-A7D6085468B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
