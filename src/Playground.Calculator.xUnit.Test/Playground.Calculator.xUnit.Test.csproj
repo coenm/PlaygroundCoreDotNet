@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Playground.Calculator\Playground.Calculator.csproj" />
+    <ProjectReference Include="..\Playground.Calculator\Playground.Calculator.csproj" />
   </ItemGroup>
 
 </Project>
