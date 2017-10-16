@@ -1,11 +1,10 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
-namespace Playground.Calculator.MsTest.Test
+namespace Playground.Calculator.xUnit.Test
 {
-    [TestClass]
     public class StandardCalculatorTest
     {
-        [TestMethod]
+        [Fact]
         public void AdditionTest()
         {
             // arrange
@@ -15,7 +14,7 @@ namespace Playground.Calculator.MsTest.Test
             var result = sut.Add(6, 7);
 
             // assert
-            Assert.AreEqual(13, result);
+            Assert.Equal(13, result);
         }
     }
 }

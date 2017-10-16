@@ -10,8 +10,10 @@ dotnet build
 ```
 
 Unittest the library with a MsTest project.
+There are two test projects with the MS Test and xUnit frameworks.
 ```bash
 dotnet test src/Playground.Calculator.MsTest.Test/Playground.Calculator.MsTest.Test.csproj
+dotnet test src/Playground.Calculator.xUnit.Test/Playground.Calculator.xUnit.Test.csproj
 ```
 
 
