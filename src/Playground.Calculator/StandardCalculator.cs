@@ -11,7 +11,8 @@ namespace Playground.Calculator
                 return secondNumber;
             }
 
-            return firstNumber + secondNumber;
+            Int64 result = firstNumber + secondNumber;
+            return (int) result;
         }
     }
 }
