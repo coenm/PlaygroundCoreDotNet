@@ -1,0 +1,37 @@
+version: 1.0.{build}
+image: Visual Studio 2017
+configuration: Release
+platform: Any CPU
+
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '{version}'
+  package_version: '{version}'
+
+install:
+- cmd: >-
+    choco install gitversion.portable -pre -y
+
+    gitversion /l console /output buildserver
+
+build_script:
+- cmd: >-
+    dotnet restore
+
+    dotnet build
+
+test_script:
+# todo: script to combine libraries and run dotnet test only once?
+- cmd: >-
+    dotnet test src/Playground.Calculator.MsTest.Test/Playground.Calculator.MsTest.Test.csproj
+
+    dotnet test src/Playground.Calculator.xUnit.Test/Playground.Calculator.xUnit.Test.csproj
+
+artifacts:
+  # Dll to check if and how version information is added.
+- path: src\Playground.Calculator\bin\Release\netstandard2.0\*.dll
+  name: Library
+  # Add the csproj to check if the version number is updated.
+- path: src\Playground.Calculator\Playground.Calculator.csproj
+  name: csproj
