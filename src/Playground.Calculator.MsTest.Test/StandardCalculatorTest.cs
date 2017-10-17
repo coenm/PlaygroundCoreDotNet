@@ -9,7 +9,7 @@ namespace Playground.Calculator.MsTest.Test
         public void AdditionTest()
         {
             // arrange
-            var sut = new StandardCalculator();
+            var sut = new StandardCalculator(null);
 
             // act
             var result = sut.Add(6, 7);
