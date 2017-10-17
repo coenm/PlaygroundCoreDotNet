@@ -24,7 +24,12 @@ dotnet test src/Playground.Calculator.MsTest.Test/Playground.Calculator.MsTest.T
 dotnet test src/Playground.Calculator.xUnit.Test/Playground.Calculator.xUnit.Test.csproj
 ```
 
-
+## Libraries used
+- [x] xUnit
+- [x] MS Test
+- [ ] NUnit
+- [x] FakeItEasy
+- [x] Moq
 
 ## TODO's
 - [x] Setup [GitFlow](http://nvie.com/posts/a-successful-git-branching-model/). Add develop branch and make this the default branch in GitHub.
