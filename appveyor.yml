@@ -1,3 +1,4 @@
+# see https://www.appveyor.com/docs/build-configuration/
 version: 1.0.{build}
 image: Visual Studio 2017
 configuration: Release
@@ -10,23 +11,38 @@ dotnet_csproj:
   package_version: '{version}'
 
 install:
-- cmd: >-
-    choco install gitversion.portable -pre -y
+# install giversion.
+# gitversion will set some appveyor settings with version information
+- choco install gitversion.portable -pre -y
+- gitversion /l console /output buildserver
 
-    gitversion /l console /output buildserver
+before_build:
+# 
 
 build_script:
-- cmd: >-
-    dotnet restore
+- dotnet restore
+- dotnet build
 
-    dotnet build
+after_build:
+#
+
+before_test:
+# install opencover and codecov for exporting the coverage results.
+- choco install opencover.portable
+- choco install codecov
 
 test_script:
+- dotnet test src/Playground.Calculator.MsTest.Test/Playground.Calculator.MsTest.Test.csproj
+- dotnet test src/Playground.Calculator.xUnit.Test/Playground.Calculator.xUnit.Test.csproj
+#
 # todo: script to combine libraries and run dotnet test only once?
-- cmd: >-
-    dotnet test src/Playground.Calculator.MsTest.Test/Playground.Calculator.MsTest.Test.csproj
+# todo:  -filter:"+[UnitTestTargetProject*]* -[MyUnitTests*]*"
+#"-filter:+[Nito*]*"
+# -mergeoutput
+- OpenCover.Console.exe -register:user -target:dotnet.exe -targetargs:"test src/Playground.Calculator.xUnit.Test/Playground.Calculator.xUnit.Test.csproj" -oldstyle -filter:"+[Playground*]* -[Playground*.Test]*" -hideskipped:Filter -returntargetcode -output:".\coverage-dotnet.xml"
 
-    dotnet test src/Playground.Calculator.xUnit.Test/Playground.Calculator.xUnit.Test.csproj
+after_test:
+- codecov -f coverage-dotnet.xml
 
 artifacts:
   # Dll to check if and how version information is added.
@@ -35,3 +51,5 @@ artifacts:
   # Add the csproj to check if the version number is updated.
 - path: src\Playground.Calculator\Playground.Calculator.csproj
   name: csproj
+- path: coverage-dotnet.xml
+  name: coverage
