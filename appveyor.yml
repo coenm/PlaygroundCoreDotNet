@@ -37,7 +37,7 @@ test_script:
 #
 # todo: script to combine libraries and run dotnet test only once?
 # todo:  -filter:"+[UnitTestTargetProject*]* -[MyUnitTests*]*"
-"-filter:+[Nito*]*"
+#"-filter:+[Nito*]*"
 - OpenCover.Console.exe -register:user -target:dotnet.exe -targetargs:"test src/Playground.Calculator.xUnit.Test/Playground.Calculator.xUnit.Test.csproj" -oldstyle -filter:"+[Playground*]* -[Playground*.Test]*" -hideskipped:Filter -returntargetcode -mergeoutput -output:".\coverage-dotnet.xml"
 
 after_test:
