@@ -5,29 +5,36 @@ namespace Playground.Calculator.xUnit.Test
 {
     public class StandardCalculatorTest
     {
+        private readonly ILogger _logger;
+        private readonly StandardCalculator _sut;
+
+        public StandardCalculatorTest()
+        {
+            _logger = A.Fake<ILogger>();
+            _sut = new StandardCalculator(_logger);
+        }
+
+
         [Fact]
         public void AdditionTest()
         {
             // arrange
-            var logger = A.Fake<ILogger>();
-            var sut = new StandardCalculator(logger);
 
             // act
-            var result = sut.Add(6, 7);
+            var result = _sut.Add(6, 7);
 
             // assert
             Assert.Equal(13, result);
-            A.CallTo(() => logger.Log(A<string>._)).MustNotHaveHappened();
+            A.CallTo(() => _logger.Log(A<string>._)).MustNotHaveHappened();
         }
 
         [Fact]
         public void AdditionCannotOverflowTest()
         {
             // arrange
-            var sut = new StandardCalculator(null);
 
             // act
-            var result = sut.Add(int.MaxValue, 1);
+            var result = _sut.Add(int.MaxValue, 1);
 
             // assert
             Assert.Equal(int.MinValue, result);
@@ -38,15 +45,25 @@ namespace Playground.Calculator.xUnit.Test
         public void AdditionWithLogLineTest()
         {
             // arrange
-            var logger = A.Fake<ILogger>();
-            var sut = new StandardCalculator(logger);
 
             // act
-            var result = sut.Add(0, 0);
+            var result = _sut.Add(0, 0);
 
             // assert
             Assert.Equal(0, result);
-            A.CallTo(() => logger.Log(A<string>._)).MustHaveHappened(Repeated.Exactly.Once);
+            A.CallTo(() => _logger.Log(A<string>._)).MustHaveHappened(Repeated.Exactly.Once);
+        }
+
+        [Fact]
+        public void MultiplyTest()
+        {
+            // arrange
+
+            // act
+            var result = _sut.Multiply(0, 0);
+
+            // assert
+            Assert.Equal(42, result);
         }
     }
 }
