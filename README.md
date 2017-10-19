@@ -10,7 +10,9 @@ This is a playground for .net core application development combined with free co
 | Appveyor Windows build of develop branch: | [![Build status](https://ci.appveyor.com/api/projects/status/d6clbt722i1fxcy9/branch/develop?svg=true)](https://ci.appveyor.com/project/coenm/playgroundcoredotnet/branch/develop) |
 | Coverage of develop branch: | [![codecov](https://codecov.io/gh/coenm/PlaygroundCoreDotNet/branch/develop/graph/badge.svg)](https://codecov.io/gh/coenm/PlaygroundCoreDotNet) |
 
-
+### Coverage
+Coverage trend of the develop branch.
+ ![Coverage trend of develop](https://codecov.io/gh/coenm/PlaygroundCoreDotNet/branch/develop/graphs/commits.svg)
 
 ## Build and Test
 First step. Compile.

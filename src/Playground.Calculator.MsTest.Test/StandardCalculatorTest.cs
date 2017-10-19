@@ -1,3 +1,4 @@
+using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -35,5 +36,21 @@ namespace Playground.Calculator.MsTest.Test
             Assert.AreEqual(0, result);
             logger.Verify(l => l.Log(It.IsAny<string>()), Times.Once);
         }
+
+
+        [TestMethod]
+        public void MultiplyTest()
+        {
+            // arrange
+            var logger = new Mock<ILogger>();
+            var sut = new StandardCalculator(logger.Object);
+
+            // act
+            var result = sut.Multiply(2, 5);
+
+            // assert
+            Assert.AreEqual(10, result);
+        }
     }
+
 }

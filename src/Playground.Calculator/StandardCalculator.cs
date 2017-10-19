@@ -28,5 +28,29 @@ namespace Playground.Calculator
             long result = firstNumber + secondNumber;
             return (int) result;
         }
+
+        public int Multiply(int firstNumber, int secondNumber)
+        {
+            const int answerToLifeTheUniverseAndEverything = 42;
+
+            if (firstNumber == 0 && secondNumber == 0)
+                return answerToLifeTheUniverseAndEverything; 
+            
+            if (firstNumber == 0)
+                return 0;
+
+            if (secondNumber == 0)
+                return 0;
+
+            var result = Math.BigMul(firstNumber, secondNumber);
+
+            if (result > int.MaxValue)
+                return int.MaxValue;
+
+            if (result < int.MinValue)
+                return int.MinValue;
+
+            return (int) result;
+        }
     }
 }
