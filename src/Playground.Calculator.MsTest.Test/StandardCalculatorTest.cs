@@ -52,5 +52,4 @@ namespace Playground.Calculator.MsTest.Test
             Assert.AreEqual(10, result);
         }
     }
-
 }

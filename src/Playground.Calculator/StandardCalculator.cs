@@ -2,12 +2,6 @@
 
 namespace Playground.Calculator
 {
-
-    public interface ILogger
-    {
-        void Log(string message);
-    }
-
     public class StandardCalculator 
     {
         private readonly ILogger _logger;
