@@ -38,11 +38,12 @@ test_script:
 # todo: script to combine libraries and run dotnet test only once?
 # todo:  -filter:"+[UnitTestTargetProject*]* -[MyUnitTests*]*"
 # -mergeoutput
-- OpenCover.Console.exe -register:user -target:dotnet.exe -targetargs:"test src/Playground.Calculator.xUnit.Test/Playground.Calculator.xUnit.Test.csproj" -oldstyle -filter:"+[Playground*]* -[Playground*.Test]*" -hideskipped:Filter -returntargetcode -mergeoutput -output:".\coverage-dotnet.xml"
-- OpenCover.Console.exe -register:user -target:dotnet.exe -targetargs:"test src/Playground.Calculator.MsTest.Test/Playground.Calculator.MsTest.Test.csproj" -oldstyle -filter:"+[Playground*]* -[Playground*.Test]*" -hideskipped:Filter -returntargetcode -mergeoutput -output:".\coverage-dotnet.xml"
+- OpenCover.Console.exe -register:user -target:dotnet.exe -targetargs:"test src/Playground.Calculator.xUnit.Test/Playground.Calculator.xUnit.Test.csproj" -oldstyle -filter:"+[Playground*]* -[Playground*.Test]*" -hideskipped:Filter -returntargetcode -output:".\coverage-dotnet-1.xml"
+- OpenCover.Console.exe -register:user -target:dotnet.exe -targetargs:"test src/Playground.Calculator.MsTest.Test/Playground.Calculator.MsTest.Test.csproj" -oldstyle -filter:"+[Playground*]* -[Playground*.Test]*" -hideskipped:Filter -returntargetcode -output:".\coverage-dotnet-2.xml"
 
 after_test:
-- codecov -f coverage-dotnet.xml
+- codecov -f coverage-dotnet-1.xml
+- codecov -f coverage-dotnet-2.xml
 # - codecov -f coverage-dotnet1.xml
 
 artifacts:
@@ -52,7 +53,7 @@ artifacts:
   # Add the csproj to check if the version number is updated.
 - path: src\Playground.Calculator\Playground.Calculator.csproj
   name: csproj
-- path: coverage-dotnet.xml
+- path: coverage-dotnet*xml
   name: coverage
 # - path: coverage-dotnet1.xml
 #   name: coverag1
