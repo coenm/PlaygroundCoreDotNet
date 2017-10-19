@@ -41,3 +41,13 @@ dotnet test src/Playground.Calculator.xUnit.Test/Playground.Calculator.xUnit.Tes
 - [x] [GitVersion](https://gitversion.readthedocs.io/en/latest/) for automatic versioning. This is work in progress.
 
 
+
+## Notes
+
+- see https://github.com/OpenCover/opencover/issues/636
+```
+<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>full</DebugType>
+    <DebugSymbols>True</DebugSymbols>
+</PropertyGroup>
+```
