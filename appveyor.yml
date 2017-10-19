@@ -30,7 +30,6 @@ before_test:
 # install opencover and codecov for exporting the coverage results.
 - choco install opencover.portable
 - choco install codecov
-- C:\ProgramData\chocolatey\lib\opencover.portable\tools\OpenCover.Console.exe -version
 
 test_script:
 # - dotnet test src/Playground.Calculator.MsTest.Test/Playground.Calculator.MsTest.Test.csproj
@@ -38,12 +37,12 @@ test_script:
 #
 # todo: script to combine libraries and run dotnet test only once?
 # -mergeoutput
-- OpenCover.Console.exe -register:user -target:dotnet.exe -targetargs:"test src/Playground.Calculator.xUnit.Test/Playground.Calculator.xUnit.Test.csproj" -oldstyle -filter:"+[Playground*]* -[Playground*.Test]*" -hideskipped:Filter -returntargetcode -output:".\coverage-dotnet-1.xml"
-- OpenCover.Console.exe -register:user -target:dotnet.exe -targetargs:"test src/Playground.Calculator.MsTest.Test/Playground.Calculator.MsTest.Test.csproj" -oldstyle -filter:"+[Playground*]* -[Playground*.Test]*" -hideskipped:Filter -returntargetcode -output:".\coverage-dotnet-2.xml"
+- C:\ProgramData\chocolatey\lib\opencover.portable\tools\OpenCover.Console.exe -register:user -target:dotnet.exe -targetargs:"test src/Playground.Calculator.xUnit.Test/Playground.Calculator.xUnit.Test.csproj" -oldstyle -filter:"+[Playground*]* -[Playground*.Test]*" -hideskipped:Filter -returntargetcode -mergeoutput -output:".\coverage-dotnet-1.xml"
+- C:\ProgramData\chocolatey\lib\opencover.portable\tools\OpenCover.Console.exe -register:user -target:dotnet.exe -targetargs:"test src/Playground.Calculator.MsTest.Test/Playground.Calculator.MsTest.Test.csproj" -oldstyle -filter:"+[Playground*]* -[Playground*.Test]*" -hideskipped:Filter -returntargetcode -mergeoutput -output:".\coverage-dotnet-1.xml"
 
 after_test:
 - codecov -f coverage-dotnet-1.xml
-- codecov -f coverage-dotnet-2.xml
+# - codecov -f coverage-dotnet-2.xml
 # - codecov -f coverage-dotnet1.xml
 
 artifacts:
