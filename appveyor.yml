@@ -36,13 +36,12 @@ test_script:
 # - dotnet test src/Playground.Calculator.xUnit.Test/Playground.Calculator.xUnit.Test.csproj
 #
 # todo: script to combine libraries and run dotnet test only once?
-# todo:  -filter:"+[UnitTestTargetProject*]* -[MyUnitTests*]*"
 # -mergeoutput
-# - OpenCover.Console.exe -register:user -target:dotnet.exe -targetargs:"test src/Playground.Calculator.xUnit.Test/Playground.Calculator.xUnit.Test.csproj" -oldstyle -filter:"+[Playground*]* -[Playground*.Test]*" -hideskipped:Filter -returntargetcode -output:".\coverage-dotnet-1.xml"
+- OpenCover.Console.exe -register:user -target:dotnet.exe -targetargs:"test src/Playground.Calculator.xUnit.Test/Playground.Calculator.xUnit.Test.csproj" -oldstyle -filter:"+[Playground*]* -[Playground*.Test]*" -hideskipped:Filter -returntargetcode -output:".\coverage-dotnet-1.xml"
 - OpenCover.Console.exe -register:user -target:dotnet.exe -targetargs:"test src/Playground.Calculator.MsTest.Test/Playground.Calculator.MsTest.Test.csproj" -oldstyle -filter:"+[Playground*]* -[Playground*.Test]*" -hideskipped:Filter -returntargetcode -output:".\coverage-dotnet-2.xml"
 
 after_test:
-# - codecov -f coverage-dotnet-1.xml
+- codecov -f coverage-dotnet-1.xml
 - codecov -f coverage-dotnet-2.xml
 # - codecov -f coverage-dotnet1.xml
 
