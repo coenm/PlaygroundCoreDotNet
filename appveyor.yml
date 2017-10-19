@@ -30,7 +30,6 @@ before_test:
 # install opencover and codecov for exporting the coverage results.
 - choco install opencover.portable
 - choco install codecov
-- OpenCover.Console.exe -?
 - C:\ProgramData\chocolatey\lib\opencover.portable\tools\OpenCover.Console.exe -version
 
 test_script:
