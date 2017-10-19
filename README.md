@@ -11,15 +11,6 @@ This is a playground for .net core application development combined with free co
 | Coverage of develop branch: | [![codecov](https://codecov.io/gh/coenm/PlaygroundCoreDotNet/branch/develop/graph/badge.svg)](https://codecov.io/gh/coenm/PlaygroundCoreDotNet) |
 
 
-### Coverage
-
-![Coverage for this commit](https://codecov.io/gh/coenm/PlaygroundCoreDotNet/commit/83b42193fe9bc86e28e56d41a428bc4e55dbb723/graphs/sunburst.svg "Coverage for this commit")
-
-@SHA
-
-![Coverage for this commit](https://codecov.io/gh/coenm/PlaygroundCoreDotNet/commit/@SHA/graphs/sunburst.svg "Coverage for this commit")
-
-
 
 ## Build and Test
 First step. Compile.

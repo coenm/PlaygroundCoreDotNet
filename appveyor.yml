@@ -42,7 +42,7 @@ test_script:
 - OpenCover.Console.exe -register:user -target:dotnet.exe -targetargs:"test src/Playground.Calculator.MsTest.Test/Playground.Calculator.MsTest.Test.csproj" -oldstyle -filter:"+[Playground*]* -[Playground*.Test]*" -hideskipped:Filter -returntargetcode -output:".\coverage-dotnet-2.xml"
 
 after_test:
-- codecov -f coverage-dotnet-1.xml
+# - codecov -f coverage-dotnet-1.xml
 - codecov -f coverage-dotnet-2.xml
 # - codecov -f coverage-dotnet1.xml
 
