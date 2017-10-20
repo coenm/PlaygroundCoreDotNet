@@ -25,12 +25,12 @@ install:
 # - gitversion /l console /output buildserver
 
 before_build:
+- dotnet restore
 - choco install "msbuild-sonarqube-runner" -y
 - SonarQube.Scanner.MSBuild.exe begin /k:"PlaygroundDotNetCoreDevelop" /d:"sonar.organization=coenm-github" /d:"sonar.host.url=https://sonarcloud.io" /d:"sonar.login=%sonar_login%" /v:%appveyor_build_version%
 # - SonarQube.Scanner.MSBuild.exe begin /k:"PlaygroundDotNetCoreDevelop" /d:"sonar.organization=coenm-github" /d:"sonar.host.url=https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="coverage-dotnet.xml" /d:"sonar.login=%sonar_login%" /v:%appveyor_build_version%
 
 build_script:
-- dotnet restore
 - dotnet build
 
 after_build:
