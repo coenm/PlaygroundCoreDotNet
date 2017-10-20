@@ -1,6 +1,9 @@
 # see https://www.appveyor.com/docs/build-configuration/
 environment:
-  %sonar_login%:
+  # see https://docs.microsoft.com/en-us/dotnet/core/tools/telemetry
+  DOTNET_CLI_TELEMETRY_OPTOUT: 1
+  # sonarqube login token
+  sonar_login:
     secure: yODIZSU12799e3GeKvmUnUMSpzmnl3fTUI+vxW1BKI4RkKsTVFx9Qi0aFSNmuA3e
 
 version: 1.0.{build}
