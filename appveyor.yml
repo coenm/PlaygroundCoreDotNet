@@ -1,4 +1,11 @@
 # see https://www.appveyor.com/docs/build-configuration/
+environment:
+  # see https://docs.microsoft.com/en-us/dotnet/core/tools/telemetry
+  DOTNET_CLI_TELEMETRY_OPTOUT: 1
+  # sonarqube login token
+  sonar_login:
+    secure: yODIZSU12799e3GeKvmUnUMSpzmnl3fTUI+vxW1BKI4RkKsTVFx9Qi0aFSNmuA3e
+
 version: 1.0.{build}
 image: Visual Studio 2017
 configuration: Release
@@ -18,11 +25,13 @@ install:
 # - gitversion /l console /output buildserver
 
 before_build:
-# 
+- dotnet restore
+- choco install "msbuild-sonarqube-runner" -y
+# - SonarQube.Scanner.MSBuild.exe begin /k:"PlaygroundDotNetCoreDevelop" /d:"sonar.organization=coenm-github" /d:"sonar.host.url=https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="coverage-dotnet.xml" /d:"sonar.login=%sonar_login%" /v:%appveyor_build_version%
 
 build_script:
-- dotnet restore
 - dotnet build
+# - dotnet msbuild
 
 after_build:
 #
@@ -40,6 +49,9 @@ test_script:
 
 after_test:
 - codecov -f coverage-dotnet.xml
+- SonarQube.Scanner.MSBuild.exe begin /k:"PlaygroundDotNetCoreDevelop" /d:"sonar.organization=coenm-github" /d:"sonar.host.url=https://sonarcloud.io" /d:"sonar.login=%sonar_login%" /v:%appveyor_build_version%
+- MSBuild.exe
+- SonarQube.Scanner.MSBuild.exe end /d:sonar.login="%sonar_login%"
 
 artifacts:
   # Dll to check if and how version information is added.
