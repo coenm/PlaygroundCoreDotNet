@@ -14,7 +14,8 @@ install:
 # install giversion.
 # gitversion will set some appveyor settings with version information
 - choco install gitversion.portable -pre -y
-- gitversion /l console /output buildserver
+- C:\ProgramData\chocolatey\lib/gitversion.portable/tools/gitversion.exe /l console /output buildserver
+# - gitversion /l console /output buildserver
 
 before_build:
 # 
@@ -34,16 +35,11 @@ before_test:
 test_script:
 # - dotnet test src/Playground.Calculator.MsTest.Test/Playground.Calculator.MsTest.Test.csproj
 # - dotnet test src/Playground.Calculator.xUnit.Test/Playground.Calculator.xUnit.Test.csproj
-#
-# todo: script to combine libraries and run dotnet test only once?
-# -mergeoutput
-- C:\ProgramData\chocolatey\lib\opencover.portable\tools\OpenCover.Console.exe -register:user -target:dotnet.exe -targetargs:"test src/Playground.Calculator.xUnit.Test/Playground.Calculator.xUnit.Test.csproj" -oldstyle -filter:"+[Playground*]* -[Playground*.Test]*" -hideskipped:Filter -returntargetcode -mergeoutput -output:".\coverage-dotnet-1.xml"
-- C:\ProgramData\chocolatey\lib\opencover.portable\tools\OpenCover.Console.exe -register:user -target:dotnet.exe -targetargs:"test src/Playground.Calculator.MsTest.Test/Playground.Calculator.MsTest.Test.csproj" -oldstyle -filter:"+[Playground*]* -[Playground*.Test]*" -hideskipped:Filter -returntargetcode -mergeoutput -output:".\coverage-dotnet-1.xml"
+- C:\ProgramData\chocolatey\lib\opencover.portable\tools\OpenCover.Console.exe -register:user -target:dotnet.exe -targetargs:"test src/Playground.Calculator.xUnit.Test/Playground.Calculator.xUnit.Test.csproj" -oldstyle -filter:"+[Playground*]* -[Playground*.Test]*" -hideskipped:Filter -returntargetcode -mergeoutput -output:".\coverage-dotnet.xml"
+- C:\ProgramData\chocolatey\lib\opencover.portable\tools\OpenCover.Console.exe -register:user -target:dotnet.exe -targetargs:"test src/Playground.Calculator.MsTest.Test/Playground.Calculator.MsTest.Test.csproj" -oldstyle -filter:"+[Playground*]* -[Playground*.Test]*" -hideskipped:Filter -returntargetcode -mergeoutput -output:".\coverage-dotnet.xml"
 
 after_test:
-- codecov -f coverage-dotnet-1.xml
-# - codecov -f coverage-dotnet-2.xml
-# - codecov -f coverage-dotnet1.xml
+- codecov -f coverage-dotnet.xml
 
 artifacts:
   # Dll to check if and how version information is added.
@@ -52,7 +48,7 @@ artifacts:
   # Add the csproj to check if the version number is updated.
 - path: src\Playground.Calculator\Playground.Calculator.csproj
   name: csproj
-- path: coverage-dotnet*xml
+- path: coverage-dotnet.xml
   name: coverage
 # - path: coverage-dotnet1.xml
 #   name: coverag1
