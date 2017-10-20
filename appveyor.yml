@@ -32,7 +32,7 @@ before_build:
 
 build_script:
 # - dotnet build
-dotnet msbuild
+- dotnet msbuild
 
 after_build:
 #
