@@ -9,7 +9,11 @@ This is a playground for .net core application development combined with free co
 | :--- | :--- |
 | Appveyor Windows build of develop branch: | [![Build status](https://ci.appveyor.com/api/projects/status/d6clbt722i1fxcy9/branch/develop?svg=true)](https://ci.appveyor.com/project/coenm/playgroundcoredotnet/branch/develop) |
 | Coverage of develop branch: | [![codecov](https://codecov.io/gh/coenm/PlaygroundCoreDotNet/branch/develop/graph/badge.svg)](https://codecov.io/gh/coenm/PlaygroundCoreDotNet) |
-| SonarQube (last success build)  | [![Quality Gate](https://sonarcloud.io/api/badges/gate?key=PlaygroundDotNetCoreDevelop&blinking=true)](https://sonarcloud.io/dashboard?id=PlaygroundDotNetCoreDevelop)  [![Quality Gate](https://sonarcloud.io/api/badges/measure?key=PlaygroundDotNetCoreDevelop&metric=coverage&blinking=true)](https://sonarcloud.io/dashboard?id=PlaygroundDotNetCoreDevelop) | 
+| SonarQube (last success build)  | [![Quality Gate](https://sonarcloud.io/api/badges/gate?key=PlaygroundDotNetCoreDevelop&blinking=true)](https://sonarcloud.io/dashboard?id=PlaygroundDotNetCoreDevelop)
+ [![Quality Gate](https://sonarcloud.io/api/badges/measure?key=PlaygroundDotNetCoreDevelop&metric=coverage&blinking=true)](https://sonarcloud.io/dashboard?id=PlaygroundDotNetCoreDevelop)
+ [![Quality Gate](https://sonarcloud.io/api/badges/measure?key=PlaygroundDotNetCoreDevelop&metric=vulnerabilities&blinking=true)](https://sonarcloud.io/dashboard?id=PlaygroundDotNetCoreDevelop) 
+ [![Quality Gate](https://sonarcloud.io/api/badges/measure?key=PlaygroundDotNetCoreDevelop&metric=ncloc&blinking=true)](https://sonarcloud.io/dashboard?id=PlaygroundDotNetCoreDevelop) | 
+ <!-- see https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges/wiki/Measure-badges  -->
 
 
 ### Coverage
