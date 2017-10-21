@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace Playground.Calculator
 {
@@ -9,6 +10,16 @@ namespace Playground.Calculator
         public StandardCalculator(ILogger logger)
         {
             _logger = logger;
+        }
+
+        public async Task HeavyCalculation(uint delay)
+        {
+            await Task.Delay((int)delay);
+        }
+
+        public async Task NotSoHeavyCalculation()
+        {
+            await HeavyCalculation(2);
         }
 
         public int Add(int firstNumber, int secondNumber)
