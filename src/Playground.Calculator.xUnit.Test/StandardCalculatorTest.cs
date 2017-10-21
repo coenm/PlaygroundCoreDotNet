@@ -1,3 +1,4 @@
+using System;
 using FakeItEasy;
 using Xunit;
 
@@ -64,6 +65,19 @@ namespace Playground.Calculator.xUnit.Test
 
             // assert
             Assert.Equal(42, result);
+        }
+
+        [Fact]
+        public void ZeroTimesAnythingIsAlwaysZeroTest()
+        {
+            // arrange
+            var randomValue = new Random().Next(1, 1000);
+
+            // act
+            var result = _sut.Multiply(0, randomValue);
+
+            // assert
+            Assert.Equal(0, result);
         }
     }
 }
