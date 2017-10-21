@@ -36,6 +36,12 @@ namespace Playground.Calculator
             if (secondNumber == 0)
                 return 0;
 
+            if (firstNumber == 0)
+            {
+                _logger.Log("First number was zero.");
+                return secondNumber;
+            }
+
             var result = Math.BigMul(firstNumber, secondNumber);
 
             if (result > int.MaxValue)
