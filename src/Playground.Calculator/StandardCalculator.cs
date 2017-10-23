@@ -9,7 +9,12 @@ namespace Playground.Calculator
 
         public StandardCalculator(ILogger logger)
         {
+            // check if sonarqube triggers on this piece of code
+            var enabled = true;
             _logger = logger;
+
+            if (!enabled)
+                _logger = logger;
         }
 
         public async Task HeavyCalculation(uint delay)
