@@ -19,12 +19,39 @@ namespace Playground.Calculator
 
         public void ThisIsAnUnusedMethod()
         {
+            // check if sonarqube sees commented code. 
+
+            // HeavyCalculation(23).GetAwaiter().GetResult();
+
             throw new ApplicationException("Never thrown");
         }
 
         public async Task HeavyCalculation(uint delay)
         {
-            await Task.Delay((int)delay);
+            // add some great code to see what sonarqube thinks of this.
+
+
+            try
+            {
+                if (delay == 1)
+                    await Task.Delay(1);
+                else if (delay == 2)
+                    await Task.Delay(2);
+                else if (delay == 3)
+                    await Task.Delay(3);
+                else if (delay == 4)
+                    await Task.Delay(4);
+                else if (delay == 5)
+                    await Task.Delay(5);
+                else if (delay == 6)
+                    await Task.Delay(6);
+                else
+                    await Task.Delay((int)delay);
+            }
+            catch (Exception e)
+            {
+                
+            }
         }
 
         public async Task NotSoHeavyCalculation()
