@@ -14,4 +14,12 @@
   </PropertyGroup>
   
 
+  
+  <PropertyGroup>
+    <!-- Fake project guid to satisfy SonarQube -->
+	<!-- Copied from sln -->
+	<!-- See https://jira.sonarsource.com/browse/SONARMSBRU-167 -->
+    <ProjectGuid>D7E737EA-D72D-4BB6-9454-B8ECABD64975</ProjectGuid> 
+  </PropertyGroup>
+  
 </Project>
