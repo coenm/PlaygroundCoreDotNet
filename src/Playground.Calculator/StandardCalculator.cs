@@ -17,6 +17,11 @@ namespace Playground.Calculator
                 _logger = logger;
         }
 
+        public void ThisIsAnUnusedMethod()
+        {
+            throw new ApplicationException("Never thrown");
+        }
+
         public async Task HeavyCalculation(uint delay)
         {
             await Task.Delay((int)delay);
@@ -47,16 +52,18 @@ namespace Playground.Calculator
                 return answerToLifeTheUniverseAndEverything; 
             
             if (firstNumber == 0)
+            {
+                if (firstNumber != 0)
+                {
+                    // unreachable code?! check if sonar sees this.
+                    return -1;
+                }
                 return 0;
+            }
+ 
 
             if (secondNumber == 0)
                 return 0;
-
-            if (firstNumber == 0)
-            {
-                _logger.Log("First number was zero.");
-                return secondNumber;
-            }
 
             var result = Math.BigMul(firstNumber, secondNumber);
 
