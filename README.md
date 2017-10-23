@@ -41,7 +41,7 @@ dotnet test src/Playground.Calculator.xUnit.Test/Playground.Calculator.xUnit.Tes
 - [x] simple .net core / standard project with unittests (ie. MsTest, xUnit, NUnit)
 - [x] Use Appveyor. This is in progress. Need to show tests. Use the gitversion output. Also need to export the config to appvayor.yml
 - [ ] Use Travis
-- [ ] Tweak SonarQube (improve/set analysis)
+- [ ] Tweak SonarQube (improve/set analysis). This is work in progress. Currently we run sonar analysis on the project and something gets displayed.
 - [ ] Extend project with Typescript, npm etc.
 - [x] [GitVersion](https://gitversion.readthedocs.io/en/latest/) for automatic versioning. This is work in progress.
 
@@ -50,9 +50,22 @@ dotnet test src/Playground.Calculator.xUnit.Test/Playground.Calculator.xUnit.Tes
 ## Notes
 
 - see https://github.com/OpenCover/opencover/issues/636
-```
+```xml
 <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebugType>full</DebugType>
     <DebugSymbols>True</DebugSymbols>
 </PropertyGroup>
 ```
+
+- SonarQube in .netcore.
+
+Click [here](https://jira.sonarsource.com/browse/SONARMSBRU-167) for the source. SonarQube requires a project guid. Therefore i've added the following snippet to the csproj file.
+
+```xml
+<PropertyGroup>
+  <!-- Fake project guid to satisfy SonarQube -->
+  <!-- Copied from sln -->
+  <!-- See https://jira.sonarsource.com/browse/SONARMSBRU-167 -->
+  <ProjectGuid>D7E737EA-D72D-4BB6-9454-B8ECABD64975</ProjectGuid> 
+</PropertyGroup>
+```  
