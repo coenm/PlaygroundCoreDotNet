@@ -21,11 +21,12 @@ install:
 # install giversion.
 # gitversion will set some appveyor settings with version information
 - choco install gitversion.portable -pre -y
-- C:\ProgramData\chocolatey\lib/gitversion.portable/tools/gitversion.exe /l console /output buildserver
+- C:\ProgramData\chocolatey\lib\gitversion.portable\tools\gitversion.exe /l console /output buildserver
 # - gitversion /l console /output buildserver
 
 before_build:
 - dotnet restore
+- choco install "sonarcube-scanner" -y
 - choco install "msbuild-sonarqube-runner" -y
 # install opencover and codecov for exporting the coverage results.
 - choco install opencover.portable
@@ -33,6 +34,7 @@ before_build:
 # - SonarQube.Scanner.MSBuild.exe begin /k:"PlaygroundDotNetCore" /d:"sonar.organization=coenm-github" /d:"sonar.host.url=https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="coverage-dotnet.xml" /d:"sonar.login=%sonar_login%" /v:%appveyor_build_version%
 
 build_script:
+- sonar-scanner -Dsonar.projectKey=PlaygroundDotNetCore -Dsonar.projectName=PlaygroundDotNetCore -Dsonar.cs.opencover.reportsPaths="coverage-dotnet.xml" -Dsonar.organization=coenm-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=%sonar_login% -Dsonar.projectVersion=%appveyor_build_version% -Dsonar.branch="%GitVersion_BranchName%" -Dsonar.cpd.cross_project=true
 - dotnet build
 # - dotnet msbuild
 
@@ -52,9 +54,12 @@ after_test:
 - codecov -f coverage-dotnet.xml
 # - dotnet clean
 # /d:sonar.projectBaseDir="src" 
-- SonarQube.Scanner.MSBuild.exe begin /k:"PlaygroundDotNetCore" /n:"PlaygroundDotNetCore" /d:sonar.cs.opencover.reportsPaths="coverage-dotnet.xml" /d:"sonar.organization=coenm-github" /d:"sonar.host.url=https://sonarcloud.io" /d:"sonar.login=%sonar_login%" /v:%appveyor_build_version% /d:"sonar.branch=%GitVersion_BranchName%" /d:"sonar.cpd.cross_project=true"
-- MSBuild.exe /t:Rebuild
-- SonarQube.Scanner.MSBuild.exe end /d:sonar.login="%sonar_login%"
+
+# https://docs.sonarqube.org/display/SONAR/Analysis+Parameters
+# - sonar-scanner -Dsonar.projectKey=PlaygroundDotNetCore -Dsonar.projectName=PlaygroundDotNetCore -Dsonar.cs.opencover.reportsPaths="coverage-dotnet.xml" -Dsonar.organization=coenm-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=%sonar_login% -Dsonar.projectVersion=%appveyor_build_version% -Dsonar.branch="%GitVersion_BranchName%" -Dsonar.cpd.cross_project=true
+# - SonarQube.Scanner.MSBuild.exe begin /k:"PlaygroundDotNetCore" /n:"PlaygroundDotNetCore" /d:sonar.cs.opencover.reportsPaths="coverage-dotnet.xml" /d:"sonar.organization=coenm-github" /d:"sonar.host.url=https://sonarcloud.io" /d:"sonar.login=%sonar_login%" /v:%appveyor_build_version% /d:"sonar.branch=%GitVersion_BranchName%" /d:"sonar.cpd.cross_project=true"
+# - MSBuild.exe /t:Rebuild
+# - SonarQube.Scanner.MSBuild.exe end /d:sonar.login="%sonar_login%"
 
 artifacts:
   # Dll to check if and how version information is added.
