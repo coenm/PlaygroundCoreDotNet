@@ -34,7 +34,7 @@ before_build:
 # - SonarQube.Scanner.MSBuild.exe begin /k:"PlaygroundDotNetCore" /d:"sonar.organization=coenm-github" /d:"sonar.host.url=https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="coverage-dotnet.xml" /d:"sonar.login=%sonar_login%" /v:%appveyor_build_version%
 
 build_script:
-- sonar-scanner -X -Dsonar.projectKey="PlaygroundDotNetCore" -Dsonar.projectName="PlaygroundDotNetCore" -Dsonar.cs.opencover.reportsPaths="coverage-dotnet.xml" -Dsonar.organization="coenm-github" -Dsonar.host.url="https://sonarcloud.io" -Dsonar.login=%sonar_login% -Dsonar.projectVersion=%appveyor_build_version% -Dsonar.branch="%GitVersion_BranchName%" -Dsonar.cpd.cross_project=true
+- sonar-scanner -X -Dsonar.sources="./" -Dsonar.projectKey="PlaygroundDotNetCore" -Dsonar.projectName="PlaygroundDotNetCore" -Dsonar.cs.opencover.reportsPaths="coverage-dotnet.xml" -Dsonar.organization="coenm-github" -Dsonar.host.url="https://sonarcloud.io" -Dsonar.login=%sonar_login% -Dsonar.projectVersion=%appveyor_build_version% -Dsonar.branch="%GitVersion_BranchName%" -Dsonar.cpd.cross_project=true
 - dotnet build
 # - dotnet msbuild
 
