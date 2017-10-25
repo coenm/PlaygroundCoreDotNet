@@ -4,11 +4,13 @@ This is a playground for .net core application development combined with free co
 
 ## Continuous integration status
 
-| Service | Status |
-| :--- | :--- |
-| Appveyor Windows build of develop branch: | [![Build status](https://ci.appveyor.com/api/projects/status/d6clbt722i1fxcy9/branch/develop?svg=true)](https://ci.appveyor.com/project/coenm/playgroundcoredotnet/branch/develop) |
-| Coverage of develop branch: | [![codecov](https://codecov.io/gh/coenm/PlaygroundCoreDotNet/branch/develop/graph/badge.svg)](https://codecov.io/gh/coenm/PlaygroundCoreDotNet)
-| SonarQube (last success build)  | [![Quality Gate](https://sonarcloud.io/api/badges/gate?key=PlaygroundDotNetCore&blinking=true)](https://sonarcloud.io/dashboard?id=PlaygroundDotNetCore) [![Quality Gate](https://sonarcloud.io/api/badges/measure?key=PlaygroundDotNetCore&metric=coverage&blinking=true)](https://sonarcloud.io/dashboard?id=PlaygroundDotNetCore) [![Quality Gate](https://sonarcloud.io/api/badges/measure?key=PlaygroundDotNetCore&metric=vulnerabilities&blinking=true)](https://sonarcloud.io/dashboard?id=PlaygroundDotNetCore) [![Quality Gate](https://sonarcloud.io/api/badges/measure?key=PlaygroundDotNetCore&metric=ncloc&blinking=true)](https://sonarcloud.io/dashboard?id=PlaygroundDotNetCore) | 
+| Service | Develop | Master |
+| :--- | :--- | :--- |
+| Appveyor CI (Windows) | [![Build status](https://ci.appveyor.com/api/projects/status/d6clbt722i1fxcy9/branch/develop?svg=true)](https://ci.appveyor.com/project/coenm/playgroundcoredotnet/branch/develop)| [![Build status](https://ci.appveyor.com/api/projects/status/d6clbt722i1fxcy9/branch/master?svg=true)](https://ci.appveyor.com/project/coenm/playgroundcoredotnet/branch/master) | 
+| Travis CI (Linux) | todo | todo | 
+| Code coverage | [![codecov](https://codecov.io/gh/coenm/PlaygroundCoreDotNet/branch/develop/graph/badge.svg)](https://codecov.io/gh/coenm/PlaygroundCoreDotNet) | [![codecov](https://codecov.io/gh/coenm/PlaygroundCoreDotNet/branch/master/graph/badge.svg)](https://codecov.io/gh/coenm/PlaygroundCoreDotNet) |
+| SonarQube  | [![Quality Gate](https://sonarcloud.io/api/badges/gate?key=PlaygroundDotNetCore%3Adevelop&blinking=true)](https://sonarcloud.io/dashboard?id=PlaygroundDotNetCore:develop)  | [![Quality Gate](https://sonarcloud.io/api/badges/gate?key=PlaygroundDotNetCore%3Amaster&blinking=true)](https://sonarcloud.io/dashboard?id=PlaygroundDotNetCore:master)  | 
+
  <!-- see https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges/wiki/Measure-badges  -->
 
 
