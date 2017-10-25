@@ -48,8 +48,8 @@ before_test:
 test_script:
 # - dotnet test src/Playground.Calculator.MsTest.Test/Playground.Calculator.MsTest.Test.csproj
 # - dotnet test src/Playground.Calculator.xUnit.Test/Playground.Calculator.xUnit.Test.csproj
-- C:\ProgramData\chocolatey\lib\opencover.portable\tools\OpenCover.Console.exe -register:user -target:dotnet.exe -targetargs:"test src/Playground.Calculator.xUnit.Test/Playground.Calculator.xUnit.Test.csproj" -oldstyle -filter:"+[Playground*]* -[Playground*.Test]*" -hideskipped:Filter -returntargetcode -mergeoutput -output:".\coverage-dotnet.xml"
-- C:\ProgramData\chocolatey\lib\opencover.portable\tools\OpenCover.Console.exe -register:user -target:dotnet.exe -targetargs:"test src/Playground.Calculator.MsTest.Test/Playground.Calculator.MsTest.Test.csproj" -oldstyle -filter:"+[Playground*]* -[Playground*.Test]*" -hideskipped:Filter -returntargetcode -mergeoutput -output:".\coverage-dotnet.xml"
+- C:\ProgramData\chocolatey\lib\opencover.portable\tools\OpenCover.Console.exe -register:user -target:dotnet.exe -targetargs:"test src/Playground.Calculator.Test/Playground.Calculator.Test.csproj" -oldstyle -filter:"+[Playground*]* -[Playground*.Test]*" -hideskipped:Filter -returntargetcode -mergeoutput -output:".\coverage-dotnet.xml"
+# - C:\ProgramData\chocolatey\lib\opencover.portable\tools\OpenCover.Console.exe -register:user -target:dotnet.exe -targetargs:"test src/Playground.Calculator.MsTest.Test/Playground.Calculator.MsTest.Test.csproj" -oldstyle -filter:"+[Playground*]* -[Playground*.Test]*" -hideskipped:Filter -returntargetcode -mergeoutput -output:".\coverage-dotnet.xml"
 
 after_test:
 - codecov -f coverage-dotnet.xml
