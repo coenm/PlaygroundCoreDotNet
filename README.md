@@ -83,20 +83,19 @@ dotnet build
 Unittest the library with a MsTest project.
 There are two test projects with the MS Test and xUnit frameworks.
 ```bash
-dotnet test src/Playground.Calculator.MsTest.Test/Playground.Calculator.MsTest.Test.csproj
-dotnet test src/Playground.Calculator.xUnit.Test/Playground.Calculator.xUnit.Test.csproj
+dotnet test src/Playground.Calculator.Test/Playground.Calculator.Test.csproj
 ```
 
 ## Libraries used
 - [x] xUnit
-- [x] MS Test
-- [ ] NUnit
+- [x] ~~MS Test~~
+- [ ] ~~NUnit~~
 - [x] FakeItEasy
-- [x] Moq
+- [x] ~~Moq~~
 
 ## TODO's
 - [x] Setup [GitFlow](http://nvie.com/posts/a-successful-git-branching-model/). Add develop branch and make this the default branch in GitHub.
-- [x] simple .net core / standard project with unittests (ie. MsTest, xUnit, NUnit)
+- [x] simple .net core / standard project with unittests (ie. ~~MsTest~~, xUnit, ~~NUnit~~)
 - [x] Use Appveyor. This is in progress. Need to show tests. Use the gitversion output. Also need to export the config to appvayor.yml
 - [ ] Use Travis
 - [ ] Tweak SonarQube (improve/set analysis). This is work in progress. Currently we run sonar analysis on the project and something gets displayed.
