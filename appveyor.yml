@@ -55,6 +55,8 @@ after_test:
 - SonarQube.Scanner.MSBuild.exe begin /k:"PlaygroundDotNetCore" /n:"PlaygroundDotNetCore" /d:sonar.cs.opencover.reportsPaths="coverage-dotnet.xml" /d:"sonar.organization=coenm-github" /d:"sonar.host.url=https://sonarcloud.io" /d:"sonar.login=%sonar_login%" /v:%appveyor_build_version% /d:"sonar.branch=%GitVersion_BranchName%" /d:"sonar.cpd.cross_project=true"
 - MSBuild.exe /t:Rebuild
 - SonarQube.Scanner.MSBuild.exe end /d:sonar.login="%sonar_login%"
+- 7z a choco.zip C:\ProgramData\chocolatey\**\*.*
+- 7z a playground.zip C:\projects\playgroundcoredotnet\**\*.*
 
 artifacts:
   # Dll to check if and how version information is added.
@@ -65,5 +67,9 @@ artifacts:
   name: csproj
 - path: coverage-dotnet.xml
   name: coverage
+- path: choco.zip
+  name: choco
+- path: playground.zip
+  name: playground    
 # - path: coverage-dotnet1.xml
 #   name: coverag1
