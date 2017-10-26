@@ -45,11 +45,9 @@ before_build:
 build_script:
 - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
-after_build:
-# nothing here
+# after_build:
 
-before_test:
-# nothing here
+# before_test:
 
 test_script:
 - .scripts\TestCoverage.bat
@@ -58,11 +56,9 @@ after_test:
 - .scripts\RunSonarqubeAnalysis.bat
 - codecov -f coverage-dotnet.xml
 
-build_success:
-# nothing here
+# build_success:
 
-on_finish:
-# nothing here
+# on_finish:
 
 artifacts:
   # Dll to check if and how version information is added.
