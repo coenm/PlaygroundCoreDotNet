@@ -37,10 +37,11 @@ IF DEFINED APPVEYOR (
 	) ELSE (
 		echo Analysing commit %APPVEYOR_REPO_COMMIT%
 		@echo off
+		REM /d:"sonar.cs.vstest.reportsPaths=%APPVEYOR_BUILD_FOLDER%\TestResults.trx"
 		REM SonarQube.Scanner.MSBuild.exe begin /k:"PlaygroundDotNetCore" /d:"sonar.host.url=https://sonarcloud.io" /v:"%appveyor_build_version%" /d:"sonar.cs.opencover.reportsPaths=coverage-dotnet.xml" /d:"sonar.cs.xunit.reportsPaths=xunit-results.xml"              /d:"sonar.login=%sonar_login%" /n:"PlaygroundDotNetCore
-		SonarQube.Scanner.MSBuild.exe begin /k:"PlaygroundDotNetCore" /d:"sonar.host.url=https://sonarcloud.io" /v:"%appveyor_build_version%" /d:"sonar.cs.opencover.reportsPaths=coverage-dotnet.xml" /d:"sonar.cs.vstest.reportsPaths=%APPVEYOR_BUILD_FOLDER%\TestResults.trx" /d:"sonar.login=%sonar_login%" /n:"PlaygroundDotNetCore"
-		REM SonarQube.Scanner.MSBuild.exe begin /k:"Stryker.NET"          /d:"sonar.host.url=https://sonarcloud.io" /v:"%appveyor_build_version%" /d:"sonar.cs.opencover.reportsPaths=coverage-dotnet.xml" /d:"sonar.cs.vstest.reportsPaths=%APPVEYOR_BUILD_FOLDER%\Stryker.NET\TestResults.trx" /d:"sonar.login=%sonar_login%"
-
+		SonarQube.Scanner.MSBuild.exe begin    /k:"PlaygroundDotNetCore" /n:"PlaygroundDotNetCore" /d:sonar.cs.opencover.reportsPaths="coverage-dotnet.xml" /d:"sonar.organization=coenm-github" /d:"sonar.host.url=https://sonarcloud.io" /d:"sonar.login=%sonar_login%" /v:%appveyor_build_version% /d:"sonar.branch=%GitVersion_BranchName%" /d:"sonar.cpd.cross_project=true"
+		
+		REM SonarQube.Scanner.MSBuild.exe begin /X /k:"PlaygroundDotNetCore" /d:"sonar.host.url=https://sonarcloud.io" /v:"%appveyor_build_version%" /d:"sonar.cs.opencover.reportsPaths=coverage-dotnet.xml" /d:"sonar.login=%sonar_login%" /n:"PlaygroundDotNetCore"
 	)
 	
 ) ELSE (
