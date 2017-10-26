@@ -1,7 +1,7 @@
 IF DEFINED APPVEYOR (
 
-	mkdir "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Microsoft.Common.targets\ImportBefore"
-	copy packages\MSBuild.SonarQube.Runner.Tool.1.0.0\tools\Targets\SonarQube.Integration.ImportBefore.targets "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Microsoft.Common.targets\ImportBefore\"
+	REM mkdir "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Microsoft.Common.targets\ImportBefore"
+	REM copy packages\MSBuild.SonarQube.Runner.Tool.1.0.0\tools\Targets\SonarQube.Integration.ImportBefore.targets "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Microsoft.Common.targets\ImportBefore\"
 
 	echo Sonarqube analysis for: %APPVEYOR_REPO_COMMIT%
 
