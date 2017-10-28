@@ -1,60 +1,64 @@
+image: Visual Studio 2017
+
 # see https://www.appveyor.com/docs/build-configuration/
 environment:
-  # see https://docs.microsoft.com/en-us/dotnet/core/tools/telemetry
   DOTNET_CLI_TELEMETRY_OPTOUT: 1
-  # sonarqube login token
   sonar_login:
     secure: yODIZSU12799e3GeKvmUnUMSpzmnl3fTUI+vxW1BKI4RkKsTVFx9Qi0aFSNmuA3e
+  github_oauth_token:
+    secure: H1vW5fnfAOt5/c5f1qnaatUjFVAPc2oZnxDBFutJZL58LxAyJNRLtfIBrcHnSg8y
+  
+# version: 1.0.{build}
+# configuration: Release
+# platform: Any CPU
 
-version: 1.0.{build}
-image: Visual Studio 2017
-configuration: Release
-platform: Any CPU
-
+#
+# Patch .NET Core csproj files to set version information
+#
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
   version: '{version}'
   package_version: '{version}'
+  # assembly_version: '{version}'
+  # file_version: '{version}'
+  # informational_version: '{version}'
+
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+init:
+# nothing here
 
 install:
-# install giversion.
-# gitversion will set some appveyor settings with version information
 - choco install gitversion.portable -pre -y
+- choco install "msbuild-sonarqube-runner" -y
+- choco install opencover.portable
+- choco install codecov
+# Run gitversion before appveyor will patch the csproj files with version info.
+# Note that the full patch is specified. Otherwise the default (older) gitversion will be used.
 - C:\ProgramData\chocolatey\lib/gitversion.portable/tools/gitversion.exe /l console /output buildserver
-# - gitversion /l console /output buildserver
 
 before_build:
 - dotnet restore
-- choco install "msbuild-sonarqube-runner" -y
-# install opencover and codecov for exporting the coverage results.
-- choco install opencover.portable
-- choco install codecov
-# - SonarQube.Scanner.MSBuild.exe begin /k:"PlaygroundDotNetCore" /d:"sonar.organization=coenm-github" /d:"sonar.host.url=https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="coverage-dotnet.xml" /d:"sonar.login=%sonar_login%" /v:%appveyor_build_version%
+- .scripts\InitializeSonarqubeAnalysis.bat
 
 build_script:
-- dotnet build
-# - dotnet msbuild
+- msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
-after_build:
-#
+# after_build:
 
-before_test:
-
+# before_test:
 
 test_script:
-# - dotnet test src/Playground.Calculator.MsTest.Test/Playground.Calculator.MsTest.Test.csproj
-# - dotnet test src/Playground.Calculator.xUnit.Test/Playground.Calculator.xUnit.Test.csproj
-- C:\ProgramData\chocolatey\lib\opencover.portable\tools\OpenCover.Console.exe -register:user -target:dotnet.exe -targetargs:"test src/Playground.Calculator.Test/Playground.Calculator.Test.csproj" -oldstyle -filter:"+[Playground*]* -[Playground*.Test]*" -hideskipped:Filter -returntargetcode -mergeoutput -output:".\coverage-dotnet.xml"
-# - C:\ProgramData\chocolatey\lib\opencover.portable\tools\OpenCover.Console.exe -register:user -target:dotnet.exe -targetargs:"test src/Playground.Calculator.MsTest.Test/Playground.Calculator.MsTest.Test.csproj" -oldstyle -filter:"+[Playground*]* -[Playground*.Test]*" -hideskipped:Filter -returntargetcode -mergeoutput -output:".\coverage-dotnet.xml"
+- .scripts\TestCoverage.bat
 
 after_test:
+- .scripts\RunSonarqubeAnalysis.bat
 - codecov -f coverage-dotnet.xml
-# - dotnet clean
-# /d:sonar.projectBaseDir="src" 
-- SonarQube.Scanner.MSBuild.exe begin /k:"PlaygroundDotNetCore" /n:"PlaygroundDotNetCore" /d:sonar.cs.opencover.reportsPaths="coverage-dotnet.xml" /d:"sonar.organization=coenm-github" /d:"sonar.host.url=https://sonarcloud.io" /d:"sonar.login=%sonar_login%" /v:%appveyor_build_version% /d:"sonar.branch=%GitVersion_BranchName%" /d:"sonar.cpd.cross_project=true"
-- MSBuild.exe /t:Rebuild
-- SonarQube.Scanner.MSBuild.exe end /d:sonar.login="%sonar_login%"
+
+# build_success:
+
+# on_finish:
 
 artifacts:
   # Dll to check if and how version information is added.
@@ -65,5 +69,3 @@ artifacts:
   name: csproj
 - path: coverage-dotnet.xml
   name: coverage
-# - path: coverage-dotnet1.xml
-#   name: coverag1
