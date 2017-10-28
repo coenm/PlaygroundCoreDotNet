@@ -5,7 +5,8 @@ environment:
   DOTNET_CLI_TELEMETRY_OPTOUT: 1
   sonar_login:
     secure: yODIZSU12799e3GeKvmUnUMSpzmnl3fTUI+vxW1BKI4RkKsTVFx9Qi0aFSNmuA3e
-  # variable github_oauth_token is set at the appveyor website.
+  github_oauth_token:
+    secure: H1vW5fnfAOt5/c5f1qnaatUjFVAPc2oZnxDBFutJZL58LxAyJNRLtfIBrcHnSg8y
   
 # version: 1.0.{build}
 # configuration: Release
@@ -68,5 +69,3 @@ artifacts:
   name: csproj
 - path: coverage-dotnet.xml
   name: coverage
-# - path: coverage-dotnet1.xml
-#   name: coverag1
