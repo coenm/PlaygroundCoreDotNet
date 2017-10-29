@@ -42,8 +42,8 @@ dotnet test src/Playground.Calculator.Test/Playground.Calculator.Test.csproj
 - [x] Setup [GitFlow](http://nvie.com/posts/a-successful-git-branching-model/). Add develop branch and make this the default branch in GitHub.
 - [x] simple .net core / standard project with unittests (ie. ~~MsTest~~, xUnit, ~~NUnit~~)
 - [x] Use Appveyor. This is in progress. Need to show tests. Use the gitversion output. Also need to export the config to appvayor.yml
-- [ ] Use Travis
-- [ ] Tweak SonarQube (improve/set analysis). This is work in progress. Currently we run sonar analysis on the project and something gets displayed.
+- [x] Use Travis. In progress.
+- [x] Tweak SonarQube (improve/set analysis). This is work in progress. Currently we run sonar analysis on the project and something gets displayed.
 - [ ] Extend project with Typescript, npm etc.
 - [x] [GitVersion](https://gitversion.readthedocs.io/en/latest/) for automatic versioning. This is work in progress.
 

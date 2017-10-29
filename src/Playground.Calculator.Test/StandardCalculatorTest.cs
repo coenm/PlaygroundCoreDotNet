@@ -2,7 +2,7 @@ using System;
 using FakeItEasy;
 using Xunit;
 
-namespace Playground.Calculator.xUnit.Test
+namespace Playground.Calculator.Test
 {
     public class StandardCalculatorTest
     {
