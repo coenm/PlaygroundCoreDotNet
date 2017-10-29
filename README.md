@@ -7,7 +7,7 @@ This is a playground for .net core application development combined with free co
 | Service | Develop | Master |
 | :--- | :--- | :--- |
 | Appveyor CI (Windows) | [![Build status](https://ci.appveyor.com/api/projects/status/d6clbt722i1fxcy9/branch/develop?svg=true)](https://ci.appveyor.com/project/coenm/playgroundcoredotnet/branch/develop)| [![Build status](https://ci.appveyor.com/api/projects/status/d6clbt722i1fxcy9/branch/master?svg=true)](https://ci.appveyor.com/project/coenm/playgroundcoredotnet/branch/master) | 
-| Travis CI (Linux) | todo | todo | 
+| Travis CI (Linux) | [![Release build Status](https://travis-ci.org/coenm/playgroundcoredotnet.svg?branch=develop)](https://travis-ci.org/coenm/playgroundcoredotnet) | [![Release build Status](https://travis-ci.org/coenm/playgroundcoredotnet.svg?branch=master)](https://travis-ci.org/coenm/playgroundcoredotnet) | 
 | Code coverage | [![codecov](https://codecov.io/gh/coenm/PlaygroundCoreDotNet/branch/develop/graph/badge.svg)](https://codecov.io/gh/coenm/PlaygroundCoreDotNet) | [![codecov](https://codecov.io/gh/coenm/PlaygroundCoreDotNet/branch/master/graph/badge.svg)](https://codecov.io/gh/coenm/PlaygroundCoreDotNet) |
 | SonarQube  | [![Quality Gate](https://sonarcloud.io/api/badges/gate?key=PlaygroundDotNetCore%3Adevelop&blinking=true)](https://sonarcloud.io/dashboard?id=PlaygroundDotNetCore:develop)  | [![Quality Gate](https://sonarcloud.io/api/badges/gate?key=PlaygroundDotNetCore%3Amaster&blinking=true)](https://sonarcloud.io/dashboard?id=PlaygroundDotNetCore:master)  | 
 
