@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    
+    <!-- do not update version, this will be done using appvayor -->
+    <Version>1.1.1</Version>
+
+    <!-- required for coverage-->
+    <!-- see https://github.com/OpenCover/opencover/issues/636 -->
+    <DebugType>full</DebugType>
+    <DebugSymbols>True</DebugSymbols>
+
+  </PropertyGroup>
+  
+
+  
+  <PropertyGroup>
+    <!-- Fake project guid to satisfy SonarQube -->
+	  <!-- Copied from sln -->
+	  <!-- See https://jira.sonarsource.com/browse/SONARMSBRU-167 -->
+    <ProjectGuid>C09DF10B-2EE8-452D-931E-ADE6A696A96D</ProjectGuid> 
+  </PropertyGroup>
+
+
+</Project>
