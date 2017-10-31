@@ -1,46 +1,30 @@
-﻿using System;
-using System.Net.Http;
-using System.Reflection;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Playground.Web;
 
 namespace Playground.Start
 {
     class Program
     {
+        private static IConfigurationBuilder _configurationBuilder;
+
         // Entry point for the application.
         public static void Main(string[] args)
         {
-            RegisterComponents();
-              BuildWebHost(args).Run();
-        }
-
-        public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
-                .UseUrls("http://localhost:5000")
-                .Build();
-        
-
-        private static void RegisterComponents()
-        {
-            BuildConfiguration();
-        }
-
-        private static IConfigurationRoot BuildConfiguration()
-        {
-            return new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json")
+            _configurationBuilder = new ConfigurationBuilder()
+                .AddCommandLine(args)
                 .AddEnvironmentVariables()
-                .Build();
+                .AddJsonFile("appsettings.json");
+
+
+            RunWebHostService(CancellationToken.None).GetAwaiter().GetResult();
         }
 
         private static async Task RunWebHostService(CancellationToken token)
         {
-//            await Container.GetInstance<WebHostService>().Run(token);
+            var webhost = new WebHostService(_configurationBuilder.Build());
+            await webhost.RunAsync(token);
         }
     }
 }

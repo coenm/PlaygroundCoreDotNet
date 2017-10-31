@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Playground.Start
+namespace Playground.Web.Api
 {
     [Controller]
     [Route("api")]
@@ -12,12 +12,7 @@ namespace Playground.Start
         public async Task<IActionResult> SayHelloWorldAsync(string name)
         {
             await Task.Delay(10);
-
-            var response = new HelloRsp
-            {
-                Name = $"{name} abc"
-            };
-
+            var response = name + name;
             return new OkObjectResult(response);
         }
        
