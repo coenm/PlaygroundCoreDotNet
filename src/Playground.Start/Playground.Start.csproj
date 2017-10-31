@@ -22,6 +22,23 @@
 	  <!-- See https://jira.sonarsource.com/browse/SONARMSBRU-167 -->
     <ProjectGuid>C09DF10B-2EE8-452D-931E-ADE6A696A96D</ProjectGuid> 
   </PropertyGroup>
+  
+
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Playground.Web\Playground.Web.csproj" />
+  </ItemGroup>
+  
+
+  
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="nlog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 
 
 </Project>
