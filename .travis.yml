@@ -25,6 +25,7 @@ script:
 - dotnet restore
 - dotnet msbuild /p:configuration=Release 
 - dotnet test /p:configuration=Release src/Playground.Calculator.Test/Playground.Calculator.Test.csproj
+- dotnet test /p:configuration=Release src/Playground.Web.Test/Playground.Web.Test.csproj
 
 cache:
   directories:
