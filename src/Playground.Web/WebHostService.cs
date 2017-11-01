@@ -4,16 +4,19 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using SimpleInjector;
 
 namespace Playground.Web
 {
     public class WebHostService
     {
         private readonly IConfiguration _configuration;
+        private readonly Container _container;
 
-        public WebHostService(IConfiguration configuration)
+        public WebHostService(IConfiguration configuration, Container container)
         {
             _configuration = configuration;
+            _container = container;
         }
 
         public async Task RunAsync(CancellationToken token)
@@ -23,7 +26,7 @@ namespace Playground.Web
 
         private IWebHost BuildWebHost()
         {
-            var startup = new Startup(_configuration);
+            var startup = new Startup(_configuration, _container);
             var builder = new WebHostBuilder()
                 .UseConfiguration(_configuration)
                 .UseKestrel()
