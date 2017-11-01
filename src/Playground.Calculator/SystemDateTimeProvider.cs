@@ -4,7 +4,7 @@ namespace Playground.Calculator
 {
     public class SystemDateTimeProvider : IDateTimeProvider
     {
-        public static SystemDateTimeProvider Instance = new SystemDateTimeProvider();
+        public static SystemDateTimeProvider Instance { get; } = new SystemDateTimeProvider();
 
         private SystemDateTimeProvider()
         {
