@@ -7,7 +7,7 @@ using Playground.Calculator;
 using Playground.Web.Api;
 using Xunit;
 
-namespace Playground.Web.Test
+namespace Playground.Web.Test.Api
 {
     public class ApiControllerTest
     {

@@ -14,7 +14,8 @@ namespace Playground.Web.Hub
         }
         public Task Send(string message)
         {
-            return IClientProxyExtensions.InvokeAsync(Clients.All, "Send", _dateTimeProvider.Now.ToString("HH:mm:ss") + " " + message);
+            var msg = _dateTimeProvider.Now.ToString("HH:mm:ss") + " " + message;
+            return Clients.All.InvokeAsync("Send", msg);
         }
     }
 }

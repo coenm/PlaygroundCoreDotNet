@@ -43,6 +43,7 @@ dotnet test src/Playground.Web.Test/Playground.Web.Test.csproj
 - [x] [GitVersion](https://gitversion.readthedocs.io/en/latest/) for automatic versioning. This is work in progress.
 - [x] ASP.NET core WebApi 
 - [ ] ASP.NET core SignalR
+- [ ] EntityFramework .NET core
 - [ ] [ZeroMQ](https://www.nuget.org/packages/NetMQ/4.0.0.4-beta)
 - [ ] NLog (or Serilog or .. use the internal [ILogger interface](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging?tabs=aspnetcore2x) ).
 - [ ] NuGet packaging.
