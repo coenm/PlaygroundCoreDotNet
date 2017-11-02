@@ -19,7 +19,7 @@ namespace Playground.Web.Api
         [HttpGet]
         public async Task<IActionResult> SayHelloWorldAsync(string name)
         {
-            await Task.Delay(10);
+            await Task.Delay(10); // dummy processing time
             var response = _dateTimeProvider.Now.ToString("HHmmss ") + name;
             return new OkObjectResult(response);
         }
@@ -29,8 +29,7 @@ namespace Playground.Web.Api
         [HttpGet]
         public async Task<IActionResult> GetTotalNumberOfGreetingsAsync()
         {
-            await Task.Delay(100);
-
+            await Task.Delay(100); // dummy processing time
             return new OkObjectResult(2);
         }
     }

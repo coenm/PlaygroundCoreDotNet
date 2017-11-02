@@ -21,12 +21,13 @@ namespace Playground.Web
 
         public async Task RunAsync(CancellationToken token)
         {
-            await BuildWebHost().RunAsync(token);
+            await ConstructWebHostBuilder().Build().RunAsync(token);
         }
 
-        private IWebHost BuildWebHost()
+        protected IWebHostBuilder ConstructWebHostBuilder()
         {
             var startup = new Startup(_configuration, _container);
+
             var builder = new WebHostBuilder()
                 .UseConfiguration(_configuration)
                 .UseKestrel()
@@ -34,10 +35,10 @@ namespace Playground.Web
                 .ConfigureServices(serviceCollection => startup.ConfigureServices(serviceCollection))
                 .Configure(applicationBuilder => startup.Configure(applicationBuilder));
 
-//            if (IsDevelopment())
+            // if (IsDevelopment())
             ConfigureWebRoot(builder);
 
-            return builder.Build();
+            return builder;
         }
 
         private static bool IsDevelopment()
