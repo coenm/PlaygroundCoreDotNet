@@ -14,7 +14,6 @@ This is a playground for .net core application development combined with free co
  <!-- see https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges/wiki/Measure-badges  -->
 
 
-
 ### Coverage
 Coverage trend of the develop branch.
  ![Coverage trend of develop](https://codecov.io/gh/coenm/PlaygroundCoreDotNet/branch/develop/graphs/commits.svg)
@@ -25,18 +24,14 @@ First step. Compile.
 dotnet build
 ```
 
-Unittest the library with a MsTest project.
-There are two test projects with the MS Test and xUnit frameworks.
+## Unittests
+For unittesting in c#, I have selected xUnit and FakeItEasy.
+To run the tests, execute the following:
 ```bash
 dotnet test src/Playground.Calculator.Test/Playground.Calculator.Test.csproj
+dotnet test src/Playground.Web.Test/Playground.Web.Test.csproj
 ```
 
-## Libraries used
-- [x] xUnit
-- [x] ~~MS Test~~
-- [ ] ~~NUnit~~
-- [x] FakeItEasy
-- [x] ~~Moq~~
 
 ## TODO's
 - [x] Setup [GitFlow](http://nvie.com/posts/a-successful-git-branching-model/). Add develop branch and make this the default branch in GitHub.
@@ -44,12 +39,20 @@ dotnet test src/Playground.Calculator.Test/Playground.Calculator.Test.csproj
 - [x] Use Appveyor. This is in progress. Need to show tests. Use the gitversion output. Also need to export the config to appvayor.yml
 - [x] Use Travis. In progress.
 - [x] Tweak SonarQube (improve/set analysis). This is work in progress. Currently we run sonar analysis on the project and something gets displayed.
-- [ ] Extend project with Typescript, npm etc.
+- [ ] Typescript, npm, webpack, etc. etc.
 - [x] [GitVersion](https://gitversion.readthedocs.io/en/latest/) for automatic versioning. This is work in progress.
-
+- [x] ASP.NET core WebApi 
+- [ ] ASP.NET core SignalR
+- [ ] [ZeroMQ](https://www.nuget.org/packages/NetMQ/4.0.0.4-beta)
+- [ ] NLog (or Serilog or .. use the internal [ILogger interface](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging?tabs=aspnetcore2x) ).
+- [ ] NuGet packaging.
 
 
 ## Notes
+- After adding a new testproject, it is necessary to fix the travis configuration and test script configuration (used in appveyor). Check if this can be improved somehow.
+- New projects need a fixed ProjectGuid (for sonarqube, see below), and DebugType and DebugSymbols set (for opencover, dotnetcore project)
+- Because multiple c# testprojects are used, the number of test is not correct in SonarQube.
+
 
 - see https://github.com/OpenCover/opencover/issues/636
 ```xml
