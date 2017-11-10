@@ -22,4 +22,10 @@
     <ProjectGuid>D7E737EA-D72D-4BB6-9454-B8ECABD64975</ProjectGuid> 
   </PropertyGroup>
   
+
+  
+  <ItemGroup>
+    <PackageReference Include="CoenM.Encoding.Z85e" Version="1.0.0-beta0001" />
+  </ItemGroup>
+  
 </Project>
