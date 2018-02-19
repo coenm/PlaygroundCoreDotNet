@@ -1,7 +1,7 @@
-﻿using Xunit;
-
-namespace Playground.Calculator.Test
+﻿namespace Playground.Calculator.Test
 {
+    using Xunit;
+
     public class Z85ByteEncoderAdapterTest
     {
         [Fact]

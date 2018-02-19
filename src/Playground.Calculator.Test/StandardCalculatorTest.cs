@@ -1,9 +1,11 @@
-using System;
-using FakeItEasy;
-using Xunit;
-
 namespace Playground.Calculator.Test
 {
+    using System;
+
+    using FakeItEasy;
+
+    using Xunit;
+
     public class StandardCalculatorTest
     {
         private readonly ILogger _logger;

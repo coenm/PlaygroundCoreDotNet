@@ -1,22 +1,21 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Playground.Web.Hub;
-using SimpleInjector;
-
-
-using Microsoft.AspNetCore.Mvc.Controllers;
-using SimpleInjector.Integration.AspNetCore.Mvc;
-
-// resource signalr: https://blogs.msdn.microsoft.com/webdev/2017/09/14/announcing-signalr-for-asp-net-core-2-0/
-
+﻿// resource signalr: https://blogs.msdn.microsoft.com/webdev/2017/09/14/announcing-signalr-for-asp-net-core-2-0/
 namespace Playground.Web
 {
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Mvc.Controllers;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+
+    using Playground.Web.Hub;
+
+    using SimpleInjector;
+    using SimpleInjector.Integration.AspNetCore.Mvc;
+
     public class Startup
     {
-        private IConfiguration _configuration;
         private readonly Container _container;
+        private IConfiguration _configuration;
 
         public Startup(IConfiguration configuration, Container container)
         {
@@ -61,7 +60,7 @@ namespace Playground.Web
             //
             var env = app.ApplicationServices.GetService<IHostingEnvironment>();
             //Logger.Info("Starting up in {0} mode.", env.EnvironmentName);
-            
+
             if (env.IsDevelopment())
                 UseStaticHosting(app);
             else //todo

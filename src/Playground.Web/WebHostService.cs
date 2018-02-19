@@ -1,13 +1,15 @@
-﻿using System;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using SimpleInjector;
-
-namespace Playground.Web
+﻿namespace Playground.Web
 {
+    using System;
+    using System.IO;
+    using System.Threading;
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.Configuration;
+
+    using SimpleInjector;
+
     public class WebHostService
     {
         private readonly IConfiguration _configuration;

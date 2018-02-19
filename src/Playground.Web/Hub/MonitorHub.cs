@@ -1,9 +1,11 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.SignalR;
-using Playground.Calculator;
-
-namespace Playground.Web.Hub
+﻿namespace Playground.Web.Hub
 {
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.SignalR;
+
+    using Playground.Calculator;
+
     public class MonitorHub : Microsoft.AspNetCore.SignalR.Hub
     {
         private readonly IDateTimeProvider _dateTimeProvider;

@@ -1,9 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
-
-namespace Playground.Calculator
+﻿namespace Playground.Calculator
 {
-    public class StandardCalculator 
+    using System;
+    using System.Threading.Tasks;
+
+    public class StandardCalculator
     {
         private readonly ILogger _logger;
 
@@ -19,7 +19,7 @@ namespace Playground.Calculator
 
         public void ThisIsAnUnusedMethod()
         {
-            // check if sonarqube sees commented code. 
+            // check if sonarqube sees commented code.
 
             // HeavyCalculation(23).GetAwaiter().GetResult();
 
@@ -50,7 +50,7 @@ namespace Playground.Calculator
             }
             catch (Exception e)
             {
-                
+
             }
         }
 
@@ -76,8 +76,8 @@ namespace Playground.Calculator
             const int answerToLifeTheUniverseAndEverything = 42;
 
             if (firstNumber == 0 && secondNumber == 0)
-                return answerToLifeTheUniverseAndEverything; 
-            
+                return answerToLifeTheUniverseAndEverything;
+
             if (firstNumber == 0)
             {
                 if (firstNumber != 0)
@@ -87,7 +87,7 @@ namespace Playground.Calculator
                 }
                 return 0;
             }
- 
+
 
             if (secondNumber == 0)
                 return 0;

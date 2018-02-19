@@ -1,8 +1,9 @@
-﻿using System;
-using Xunit;
-
-namespace Playground.Calculator.Test
+﻿namespace Playground.Calculator.Test
 {
+    using System;
+
+    using Xunit;
+
     public class SystemDateTimeProviderTest
     {
         /// <summary>

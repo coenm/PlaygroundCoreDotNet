@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using SimpleInjector;
-
-namespace Playground.Web.Test
+﻿namespace Playground.Web.Test
 {
-    class FakeWebHostService : WebHostService
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.Configuration;
+
+    using SimpleInjector;
+
+    internal class FakeWebHostService : WebHostService
     {
         public FakeWebHostService(IConfiguration configuration, Container container) : base(configuration, container)
         {

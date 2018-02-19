@@ -1,15 +1,15 @@
-﻿using System.Linq;
-using CoenM.Encoding;
-
-namespace Playground.Calculator
+﻿namespace Playground.Calculator
 {
+    using System.Linq;
+    using CoenM.Encoding;
+
     public class Z85ByteEncoderAdapter : IByteEncoder
     {
-        public static Z85ByteEncoderAdapter Instance { get; } = new Z85ByteEncoderAdapter();
-
         private Z85ByteEncoderAdapter()
         {
         }
+
+        public static Z85ByteEncoderAdapter Instance { get; } = new Z85ByteEncoderAdapter();
 
         public byte[] Decode(string input)
         {

@@ -1,14 +1,19 @@
-﻿using System;
-using System.Threading.Tasks;
-using FakeItEasy;
-using Microsoft.AspNetCore.TestHost;
-using Microsoft.Extensions.Configuration;
-using Playground.Calculator;
-using SimpleInjector;
-using Xunit;
-
-namespace Playground.Web.Test
+﻿namespace Playground.Web.Test
 {
+    using System;
+    using System.Threading.Tasks;
+
+    using FakeItEasy;
+
+    using Microsoft.AspNetCore.TestHost;
+    using Microsoft.Extensions.Configuration;
+
+    using Playground.Calculator;
+
+    using SimpleInjector;
+
+    using Xunit;
+
     public class IntegrationTest
     {
         private readonly Container _container;
@@ -35,7 +40,7 @@ namespace Playground.Web.Test
                 // act
                 var response = await server.CreateRequest("/api/sayhelloworld/test").SendAsync("GET");
 
-                // assert 
+                // assert
                 response.EnsureSuccessStatusCode();
                 var content = await response.Content.ReadAsStringAsync();
                 Assert.Equal("060810 test", content);

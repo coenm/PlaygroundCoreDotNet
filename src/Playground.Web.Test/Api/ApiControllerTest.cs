@@ -1,14 +1,18 @@
-using System;
-using System.Net;
-using System.Threading.Tasks;
-using FakeItEasy;
-using Microsoft.AspNetCore.Mvc;
-using Playground.Calculator;
-using Playground.Web.Api;
-using Xunit;
-
 namespace Playground.Web.Test.Api
 {
+    using System;
+    using System.Net;
+    using System.Threading.Tasks;
+
+    using FakeItEasy;
+
+    using Microsoft.AspNetCore.Mvc;
+
+    using Playground.Calculator;
+    using Playground.Web.Api;
+
+    using Xunit;
+
     public class ApiControllerTest
     {
         private readonly ApiController _sut;

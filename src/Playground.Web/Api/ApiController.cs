@@ -1,9 +1,11 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Playground.Calculator;
-
-namespace Playground.Web.Api
+﻿namespace Playground.Web.Api
 {
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Mvc;
+
+    using Playground.Calculator;
+
     [Controller]
     [Route("api")]
     public class ApiController
@@ -23,7 +25,7 @@ namespace Playground.Web.Api
             var response = _dateTimeProvider.Now.ToString("HHmmss ") + name;
             return new OkObjectResult(response);
         }
-       
+
 
         [Route("greetings/count")]
         [HttpGet]
